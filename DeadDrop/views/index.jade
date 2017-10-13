@@ -1,0 +1,70 @@
+extends layout
+
+block content
+  #logo(onclick='geoFindMe()')
+    img(src= "/images/logo.svg")
+  #intro
+    p Hello there. <br> Welcome to Dead Drop.
+    p Select the logo to leave a message <br> at this location.
+    #out
+ 
+  #messages
+    #message-header Messages that already happened:
+    div Donut danish muffin chocolate cake cotton candy icing caramels dragée lollipop.
+    div Candy canes jelly beans macaroon jelly beans pie. Brownie tart chocolate cake cupcake apple pie croissant. Carrot cake fruitcake cake croissant caramels cotton candy dragée.
+    div Sweet roll pastry gummi bears sweet. Muffin chupa chups pudding biscuit fruitcake chocolate cake.
+    div Icing gingerbread wafer brownie powder. Chocolate bar cookie apple pie sweet pie. Candy canes brownie tart croissant brownie cake dessert jelly.
+    div Bonbon apple pie sesame snaps sweet sugar plum wafer topping icing. Tootsie roll tart sweet biscuit chupa chups bonbon wafer. Dessert soufflé pudding tootsie roll jelly. Bonbon sesame snaps wafer.
+    div Donut danish muffin chocolate cake cotton candy icing caramels dragée lollipop.
+    div Candy canes jelly beans macaroon jelly beans pie. Brownie tart chocolate cake cupcake apple pie croissant. Carrot cake fruitcake cake croissant caramels cotton candy dragée.
+    div Sweet roll pastry gummi bears sweet. Muffin chupa chups pudding biscuit fruitcake chocolate cake.
+    div Icing gingerbread wafer brownie powder. Chocolate bar cookie apple pie sweet pie. Candy canes brownie tart croissant brownie cake dessert jelly.
+    div Bonbon apple pie sesame snaps sweet sugar plum wafer topping icing. Tootsie roll tart sweet biscuit chupa chups bonbon wafer. Dessert soufflé pudding tootsie roll jelly. Bonbon sesame snaps wafer.
+    div Donut danish muffin chocolate cake cotton candy icing caramels dragée lollipop.
+    div Candy canes jelly beans macaroon jelly beans pie. Brownie tart chocolate cake cupcake apple pie croissant. Carrot cake fruitcake cake croissant caramels cotton candy dragée.
+    div Sweet roll pastry gummi bears sweet. Muffin chupa chups pudding biscuit fruitcake chocolate cake.
+    div Icing gingerbread wafer brownie powder. Chocolate bar cookie apple pie sweet pie. Candy canes brownie tart croissant brownie cake dessert jelly.
+    div Bonbon apple pie sesame snaps sweet sugar plum wafer topping icing. Tootsie roll tart sweet biscuit chupa chups bonbon wafer. Dessert soufflé pudding tootsie roll jelly. Bonbon sesame snaps wafer.
+    div Donut danish muffin chocolate cake cotton candy icing caramels dragée lollipop.
+    div Candy canes jelly beans macaroon jelly beans pie. Brownie tart chocolate cake cupcake apple pie croissant. Carrot cake fruitcake cake croissant caramels cotton candy dragée.
+    div Sweet roll pastry gummi bears sweet. Muffin chupa chups pudding biscuit fruitcake chocolate cake.
+    div Icing gingerbread wafer brownie powder. Chocolate bar cookie apple pie sweet pie. Candy canes brownie tart croissant brownie cake dessert jelly.
+    div Bonbon apple pie sesame snaps sweet sugar plum wafer topping icing. Tootsie roll tart sweet biscuit chupa chups bonbon wafer. Dessert soufflé pudding tootsie roll jelly. Bonbon sesame snaps wafer.    
+    div Donut danish muffin chocolate cake cotton candy icing caramels dragée lollipop.
+    div Candy canes jelly beans macaroon jelly beans pie. Brownie tart chocolate cake cupcake apple pie croissant. Carrot cake fruitcake cake croissant caramels cotton candy dragée.
+    div Sweet roll pastry gummi bears sweet. Muffin chupa chups pudding biscuit fruitcake chocolate cake.
+    div Icing gingerbread wafer brownie powder. Chocolate bar cookie apple pie sweet pie. Candy canes brownie tart croissant brownie cake dessert jelly.
+    div Bonbon apple pie sesame snaps sweet sugar plum wafer topping icing. Tootsie roll tart sweet biscuit chupa chups bonbon wafer. Dessert soufflé pudding tootsie roll jelly. Bonbon sesame snaps wafer.
+    div Donut danish muffin chocolate cake cotton candy icing caramels dragée lollipop.
+    div Candy canes jelly beans macaroon jelly beans pie. Brownie tart chocolate cake cupcake apple pie croissant. Carrot cake fruitcake cake croissant caramels cotton candy dragée.
+    div Sweet roll pastry gummi bears sweet. Muffin chupa chups pudding biscuit fruitcake chocolate cake.
+    div Icing gingerbread wafer brownie powder. Chocolate bar cookie apple pie sweet pie. Candy canes brownie tart croissant brownie cake dessert jelly.
+    div Bonbon apple pie sesame snaps sweet sugar plum wafer topping icing. Tootsie roll tart sweet biscuit chupa chups bonbon wafer. Dessert soufflé pudding tootsie roll jelly. Bonbon sesame snaps wafer.
+    div Donut danish muffin chocolate cake cotton candy icing caramels dragée lollipop.
+    div Candy canes jelly beans macaroon jelly beans pie. Brownie tart chocolate cake cupcake apple pie croissant. Carrot cake fruitcake cake croissant caramels cotton candy dragée.
+    div Sweet roll pastry gummi bears sweet. Muffin chupa chups pudding biscuit fruitcake chocolate cake.
+    div Icing gingerbread wafer brownie powder. Chocolate bar cookie apple pie sweet pie. Candy canes brownie tart croissant brownie cake dessert jelly.
+    div Bonbon apple pie sesame snaps sweet sugar plum wafer topping icing. Tootsie roll tart sweet biscuit chupa chups bonbon wafer. Dessert soufflé pudding tootsie roll jelly. Bonbon sesame snaps wafer.
+    div Donut danish muffin chocolate cake cotton candy icing caramels dragée lollipop.
+    div Candy canes jelly beans macaroon jelly beans pie. Brownie tart chocolate cake cupcake apple pie croissant. Carrot cake fruitcake cake croissant caramels cotton candy dragée.
+    div Sweet roll pastry gummi bears sweet. Muffin chupa chups pudding biscuit fruitcake chocolate cake.
+    div Icing gingerbread wafer brownie powder. Chocolate bar cookie apple pie sweet pie. Candy canes brownie tart croissant brownie cake dessert jelly.
+    div Bonbon apple pie sesame snaps sweet sugar plum wafer topping icing. Tootsie roll tart sweet biscuit chupa chups bonbon wafer. Dessert soufflé pudding tootsie roll jelly. Bonbon sesame snaps wafer.        
+  script.
+    function geoFindMe() {
+      var output = document.getElementById("out");
+      if (!navigator.geolocation){
+        output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+        return;
+      }
+      function success(position) {
+        var latitude  = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+      }
+      function error() {
+        output.innerHTML = "Unable to retrieve your location";
+      }
+      output.innerHTML = "<p>Locating…</p>";
+      navigator.geolocation.getCurrentPosition(success, error);
+    }  
