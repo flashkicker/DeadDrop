@@ -1,8 +1,9 @@
 extends layout
 
 block content
-  #logo(onclick='geoFindMe()')
-    img(src= "/images/logo.svg")
+  #logo
+    a(href="/create")
+      img(src="/images/logo.svg")
   #intro
     p Hello there. <br> Welcome to Dead Drop.
     p Select the logo to leave a message <br> at this location.

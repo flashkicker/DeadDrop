@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1 Create New Message
+  form#create
+    textarea#create-body
+    button#create-cancel(formaction="/") Cancel
+    button#create-submit(type="submit") Submit
