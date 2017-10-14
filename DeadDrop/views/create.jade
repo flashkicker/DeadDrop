@@ -2,7 +2,10 @@ extends layout
 
 block content
   h1 Create New Message
-  form#create
-    textarea#create-body
-    button#create-cancel(formaction="/") Cancel
-    button#create-submit(type="submit") Submit
+  form#create(method="POST" action='/api/message')
+    textarea#create-message(placeholder="Enter your message here", name="message")
+    input#create-latitude(type="hidden", name="latitude")
+    input#create-longitude(type="hidden", name="longitude")
+    input#create-longitude(type="hidden", name="timestamp")
+    button#create-cancel(formaction="/", name="cancel") Cancel
+    button#create-submit(type="submit", name="submit") Submit
