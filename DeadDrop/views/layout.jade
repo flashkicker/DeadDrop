@@ -2,7 +2,9 @@ doctype html
 html
   head
     title= title
+    block scripts
+      script(src='/javascripts/createsubmit.js')
     link(rel='stylesheet', href='/stylesheets/style.css')
-    script(src='/javascripts/geo.js')
   body
+    #error
     block content

@@ -68,3 +68,11 @@ div#message-header {
 #out {
   font-weight:normal;
 }
+
+#hidden-latitude {
+  display:none;
+}
+
+#hidden-longitude {
+  display:none;
+}

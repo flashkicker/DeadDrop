@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+/* GET home page */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Dead Drop' });
 });
@@ -9,6 +9,11 @@ router.get('/', function(req, res, next) {
 /* GET create message page */
 router.get('/create', function(req, res, next) {
   res.render('create', { title: 'Dead Drop - New Message' });
+});
+
+/* POST new message */
+router.post('/message', function(req, res, next) {
+  res.render('index', { title: 'Submitted!' });
 });
 
 module.exports = router;
