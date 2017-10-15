@@ -16,7 +16,7 @@ process.argv.forEach(function (arg) {
   if(arg=='dev') DEV = true;
 });
 
-var CFG_PATH = '../../config/';
+var CFG_PATH = '../config/';
 
 /**
  * Get port from environment and store in Express.

@@ -5,5 +5,5 @@ block content
   .btn
     a(href="/") Go Back
   #messages
-    each msg in [1,2,3]
-      div= msg         
+    each msg in messages
+      div= msg.message+" ("+msg.timestamp+")"        
