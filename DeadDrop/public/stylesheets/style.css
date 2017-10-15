@@ -68,3 +68,16 @@ div#message-header {
 #hidden-longitude {
   display:none;
 }
+
+#status {
+  animation: blinking 1s linear infinite;
+  width:100%;
+  margin:auto;
+  margin-top:20px;
+  text-align:center;
+  font-size:1.25em;
+}
+
+@keyframes blinking {  
+  50% { opacity: 0; }
+}
