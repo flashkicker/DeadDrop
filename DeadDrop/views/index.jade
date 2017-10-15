@@ -7,7 +7,8 @@ block content
     form#list(method="GET" action="/message")
       input#list-latitude(type="hidden", name="latitude")
       input#list-longitude(type="hidden", name="longitude")
-      a#list-submit(onclick="listSubmit()" name="submit") View Messages
+      #list-submit.submit.btn
+        a(onclick="listSubmit()" name="submit") View Messages
   #logo
     a(href="/create")
       img(src="/images/logo.svg")

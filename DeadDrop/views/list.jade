@@ -3,4 +3,7 @@ extends layout
 block content
   h1 Messages in Your Area
   #messages
-    a(href="/") Go Back      
+    .btn
+      a(href="/") Go Back
+    each msg in [1,2,3]
+      div= msg         

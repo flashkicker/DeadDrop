@@ -3,9 +3,12 @@ extends layout
 block content
   h1 Create New Message
   form#create(method="POST" action="/message")
-    textarea#create-message(placeholder="Enter your message here", name="message")
+    div#create-message
+      textarea(placeholder="Enter your message here", name="message")
     input#create-latitude(type="hidden", name="latitude")
     input#create-longitude(type="hidden", name="longitude")
     input#create-timestamp(type="hidden", name="timestamp")
-    a#create-cancel(href="/" name="cancel") Cancel
-    a#create-submit(onclick="createSubmit()" name="submit") Submit
+    div#create-submit.submit.btn 
+      a(onclick="createSubmit()" name="submit") Submit
+    div#create-cancel.btn
+      a(href="/" name="cancel") Cancel
