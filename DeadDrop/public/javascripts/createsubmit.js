@@ -1,5 +1,7 @@
 function createSubmit() {
-  var errmsg = "<p>Geolocation is not supported by your browser. You will not be able to create messages.</p>"
+  var status = document.getElementById("status");
+  status.innerHTML = "Getting your location...";  
+  var errmsg = "<p>Geolocation is not supported by your browser. You will not be able to create messages.</p>";
   var err = document.getElementById("error");
   var latdest = document.getElementById("create-latitude");
   var longdest = document.getElementById("create-longitude");
