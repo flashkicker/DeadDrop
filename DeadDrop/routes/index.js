@@ -11,6 +11,11 @@ router.get('/create', function(req, res, next) {
   res.render('create', { title: 'Dead Drop - New Message' });
 });
 
+/* GET list of messages in the area */
+router.get('/message', function(req, res, next) {
+  res.render('list', { title: 'Dead Drop - Messages Around Here'});
+});
+
 /* POST new message */
 router.post('/message', function(req, res, next) {
   res.render('index', { title: 'Submitted!' });

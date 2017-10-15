@@ -14,14 +14,11 @@ a {
 }
 
 #logo {
-  position: fixed;
   width:30%;
   max-width:150px;
   min-width:75px;
   margin:auto;
-  left:0;
-  right:0;
-  top:30%;
+  margin-top:20px;
 }
 
 #logo img {
@@ -39,7 +36,6 @@ a {
   margin:auto;
   position:absolute;
   left:10px;
-  top:55%;
   padding-bottom:10px;
 }
 
@@ -63,10 +59,6 @@ div#message-header {
   font-weight:bold;
   margin:auto;
   margin-top:20px;
-}
-
-#out {
-  font-weight:normal;
 }
 
 #hidden-latitude {
