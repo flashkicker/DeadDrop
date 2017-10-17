@@ -76,12 +76,25 @@ div#message-header {
 }
 
 #status {
-  animation: blinking 1s linear infinite;
   width:100%;
   margin:auto;
   margin-top:20px;
   text-align:center;
   font-size:1.25em;
+}
+
+#error {
+  margin-bottom:10px;
+  color:red;
+}
+
+#working {
+  animation: blinking 1s linear infinite;
+  margin-bottom:10px;
+}
+
+#success {
+  animation: blinking 1s linear 3;
 }
 
 .submit a {
