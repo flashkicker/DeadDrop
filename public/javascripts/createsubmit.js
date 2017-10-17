@@ -27,11 +27,18 @@ function createSubmit() {
 
 function getTimestamp() {
   var now = new Date();
-  var year = now.getFullYear();
-  var month = now.getMonth();
-  var day = now.getDay();
-  // zero pad month and day
-  if (month.toString().length==1) { month = '0' + month; }
-  if (day.toString().length==1) { day = '0' + day; }
-  return year+"-"+month+"-"+day;
+  var year = zeroPad(now.getFullYear());
+  var month = zeroPad(now.getMonth());
+  var day = zeroPad(now.getDay());
+  var hours = zeroPad(now.getHours());
+  var mins = zeroPad(now.getMinutes());
+  var seconds = zeroPad(now.getSeconds());
+  return year+"-"+month+"-"+day+" "+hours+":"+mins+":"+seconds;
+}
+
+function zeroPad(i) {
+  if (i < 10) {
+    i = "0" + i;
+  }
+  return i;
 }
