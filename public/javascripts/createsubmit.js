@@ -27,13 +27,14 @@ function createSubmit() {
 
 function getTimestamp() {
   var now = new Date();
-  var year = zeroPad(now.getFullYear());
-  var month = zeroPad(now.getMonth());
-  var day = zeroPad(now.getDay());
-  var hours = zeroPad(now.getHours());
-  var mins = zeroPad(now.getMinutes());
-  var seconds = zeroPad(now.getSeconds());
-  return year+"-"+month+"-"+day+" "+hours+":"+mins+":"+seconds;
+  var year = zeroPad(now.getUTCFullYear());
+  var month = zeroPad(now.getUTCMonth()+1);
+  var day = zeroPad(now.getUTCDate());
+  var hours = zeroPad(now.getUTCHours());
+  var mins = zeroPad(now.getUTCMinutes());
+  var seconds = zeroPad(now.getUTCSeconds());
+  var timestamp = year+"-"+month+"-"+day+" "+hours+":"+mins+":"+seconds;
+  return timestamp;
 }
 
 function zeroPad(i) {
