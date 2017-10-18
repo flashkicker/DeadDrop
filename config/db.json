@@ -1,6 +1,6 @@
 {
-    "user": "root",
-    "password": "mysqlpass",
+    "user": "semdemo",
+    "password": "demo123",
     "database": "deaddrop",
     "host": "localhost"
 }

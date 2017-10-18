@@ -20,7 +20,7 @@ function createSubmit() {
   }
   function error() {
     clearStatus();
-    err.innerHTML = errmsg;
+    err.innerHTML = errmsg;``
   }
   navigator.geolocation.getCurrentPosition(success, error);
 }
@@ -42,4 +42,9 @@ function zeroPad(i) {
     i = "0" + i;
   }
   return i;
+}
+
+module.exports = {
+  getTimestamp: getTimestamp,
+  createSubmit: createSubmit
 }
