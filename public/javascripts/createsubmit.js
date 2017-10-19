@@ -34,6 +34,7 @@ function getTimestamp() {
   var mins = zeroPad(now.getUTCMinutes());
   var seconds = zeroPad(now.getUTCSeconds());
   var timestamp = year+"-"+month+"-"+day+" "+hours+":"+mins+":"+seconds;
+  console.log(timestamp);
   return timestamp;
 }
 
