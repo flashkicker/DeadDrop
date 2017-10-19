@@ -8,9 +8,9 @@ const datarepo = require('../models/message.js');
 // /GET
 // api/message?latitude={latitude}&longitude={longitude}&range={range}
 router.get('/message/', (req, res) => {
-    var latitude = req.param('latitude');
-    var longitude = req.param('longitude');
-    var range = req.param('range');
+    var latitude = req.param.range;
+    var longitude = req.param.range;
+    var range = req.param.range;
     
     datarepo.getMessages(latitude, longitude, range, (err, result) => {
             if(err) {

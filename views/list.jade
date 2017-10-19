@@ -2,8 +2,10 @@ extends layout
 
 block content
   h1 Messages in Your Area
+  #caption
+    h2 -->Kilroy was here<--       
   .btn
-    a(href="/") Go Back
+    a(href="/") Home
   #messages
-    each msg in [1,2,3]
-      div= msg         
+    each msg in messages
+      div= msg.message+" ("+msg.timestamp+")"        

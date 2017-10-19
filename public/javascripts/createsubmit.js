@@ -1,7 +1,9 @@
 function createSubmit() {
-  var status = document.getElementById("status");
+  clearStatus();
+  getTimestamp();
+  var status = document.getElementById("working");
   status.innerHTML = "Getting your location...";  
-  var errmsg = "<p>Geolocation is not supported by your browser. You will not be able to create messages.</p>";
+  var errmsg = "Geolocation is not supported by your browser. You will not be able to create messages.";
   var err = document.getElementById("error");
   var latdest = document.getElementById("create-latitude");
   var longdest = document.getElementById("create-longitude");
@@ -17,11 +19,33 @@ function createSubmit() {
     document.getElementById("create").submit();
   }
   function error() {
-    err.innerHTML = errmsg;
+    clearStatus();
+    err.innerHTML = errmsg;``
   }
   navigator.geolocation.getCurrentPosition(success, error);
 }
 
 function getTimestamp() {
-  return Date.now();
+  var now = new Date();
+  var year = zeroPad(now.getUTCFullYear());
+  var month = zeroPad(now.getUTCMonth()+1);
+  var day = zeroPad(now.getUTCDate());
+  var hours = zeroPad(now.getUTCHours());
+  var mins = zeroPad(now.getUTCMinutes());
+  var seconds = zeroPad(now.getUTCSeconds());
+  var timestamp = year+"-"+month+"-"+day+" "+hours+":"+mins+":"+seconds;
+  console.log(timestamp);
+  return timestamp;
+}
+
+function zeroPad(i) {
+  if (i < 10) {
+    i = "0" + i;
+  }
+  return i;
+}
+
+module.exports = {
+  getTimestamp: getTimestamp,
+  createSubmit: createSubmit
 }
