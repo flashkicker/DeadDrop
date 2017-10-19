@@ -1,6 +1,6 @@
 {
     "user": "root",
-    "password": "ujjval",
+    "password": "mysqlpass",
     "database": "deaddrop",
     "host": "localhost"
 }
