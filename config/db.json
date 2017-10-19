@@ -1,6 +1,6 @@
 {
-    "user": "semdemo",
-    "password": "demo123",
+    "user": "root",
+    "password": "ujjval",
     "database": "deaddrop",
     "host": "localhost"
 }
