@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const datarepo = require('../models/message.js');
 
-var appTitle = 'Dead Drop';
+var appTitle = 'DeadDrop';
 var msgListTitle = appTitle + ' - Messages Around Here';
 var createMsgTitle = appTitle + ' - New Message';
 
@@ -18,9 +18,9 @@ router.get('/create', function(req, res, next) {
 
 /* GET list of messages in the area */
 router.get('/message', function(req, res, next) {
-  var latitude = req.param('latitude');
-  var longitude = req.param('longitude');
-  var range = req.param('range');
+  var latitude = req.param.range;
+  var longitude = req.param.range;
+  var range = req.param.range;
 
   datarepo.getMessages(latitude, longitude, range, (err, result) => { //result is Array of JS objects
     res.render('list', { title: msgListTitle, messages: result });

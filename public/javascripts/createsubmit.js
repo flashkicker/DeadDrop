@@ -20,18 +20,32 @@ function createSubmit() {
   }
   function error() {
     clearStatus();
-    err.innerHTML = errmsg;
+    err.innerHTML = errmsg;``
   }
   navigator.geolocation.getCurrentPosition(success, error);
 }
 
 function getTimestamp() {
   var now = new Date();
-  var year = now.getFullYear();
-  var month = now.getMonth();
-  var day = now.getDay();
-  // zero pad month and day
-  if (month.toString().length==1) { month = '0' + month; }
-  if (day.toString().length==1) { day = '0' + day; }
-  return year+"-"+month+"-"+day;
+  var year = zeroPad(now.getUTCFullYear());
+  var month = zeroPad(now.getUTCMonth()+1);
+  var day = zeroPad(now.getUTCDate());
+  var hours = zeroPad(now.getUTCHours());
+  var mins = zeroPad(now.getUTCMinutes());
+  var seconds = zeroPad(now.getUTCSeconds());
+  var timestamp = year+"-"+month+"-"+day+" "+hours+":"+mins+":"+seconds;
+  console.log(timestamp);
+  return timestamp;
+}
+
+function zeroPad(i) {
+  if (i < 10) {
+    i = "0" + i;
+  }
+  return i;
+}
+
+module.exports = {
+  getTimestamp: getTimestamp,
+  createSubmit: createSubmit
 }

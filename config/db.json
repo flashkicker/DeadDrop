@@ -1,7 +1,6 @@
 {
-    "user": "semdemo",
-    "password": "demo",
-    "database": "deaddrop",
-    "host": "localhost",
-    "echo":true
+    "user": "deadrop",
+    "password": "spystuff",
+    "database": "deadrop",
+    "host": "localhost"
 }

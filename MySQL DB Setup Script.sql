@@ -1,5 +1,7 @@
 CREATE DATABASE `deaddrop` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
+use deaddrop;
+
 CREATE TABLE `messages` (
   `uuid` int(11) NOT NULL AUTO_INCREMENT,
   `message` varchar(300) NOT NULL,
