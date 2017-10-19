@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const datarepo = require('../models/message.js');
 
-var appTitle = 'Dead Drop';
+var appTitle = 'DeadDrop';
 var msgListTitle = appTitle + ' - Messages Around Here';
 var createMsgTitle = appTitle + ' - New Message';
 
