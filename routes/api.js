@@ -25,10 +25,13 @@ router.get('/message/', (req, res) => {
 // /POST
 // api/message (with JSON object sent in body)
 router.post('/message/', (req, res) => {
-    var latitude = req.body.latitude;
-    var longitude = req.body.longitude;
-    var timestamp = req.body.timestamp;
-    var message = req.body.message;
+    var latitude = req.body.data.message.latitude;
+    var longitude = req.body.data.message.longitude;
+    var timestamp = req.body.data.message.timestamp;
+    var message = req.body.data.message.message;
+
+    // res.send("latitude:"+latitude);
+
 
     datarepo.saveMessage(latitude, longitude, timestamp, message, (err, result) => {
         if(err) {
