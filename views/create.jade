@@ -4,7 +4,7 @@ block content
   h1 Create New Message
   form#create(method="POST" action="/message")
     div#create-message
-      textarea(id="txtarea")(placeholder="Enter your message here", name="message")
+      textarea(id="txtarea")(placeholder="Enter your message here", name="message", maxlength="280")
     input#create-latitude(type="hidden", name="latitude")
     input#create-longitude(type="hidden", name="longitude")
     input#create-timestamp(type="hidden", name="timestamp")

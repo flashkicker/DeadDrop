@@ -3,7 +3,7 @@ var dbConStr = require('../config/db.json');
 
 function getMessages(latitude, longitude, range, callback) {
     var stage = db.stage(dbConStr);
-    stage.query("select * from messages");
+    stage.query("select * from messages order by uuid desc");
     stage.finale((err, results) => {
                         if (err) return callback(err);
                         else return callback(err, results);
