@@ -1,6 +1,6 @@
 {
-    "user": "deadrop",
-    "password": "spystuff",
-    "database": "deadrop",
+    "user": "root",
+    "password": "mysql123",
+    "database": "deaddrop",
     "host": "localhost"
 }
