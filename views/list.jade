@@ -1,11 +1,17 @@
 extends layout
 
 block content
-  h1 Messages in Your Area
+  .container
+  .panel-title
+      h1.display Notes dropped at this location
   #caption
     h2 -->Kilroy was here<--       
   .btn
-    a(href="/") Home
-  #messages
-    each msg in messages
-      div= msg.message+" ("+msg.timestamp+")"        
+    a(href="/") Home <br>
+  
+  each msg in messages
+      .badge
+        div= msg.message
+        #timestamp
+          div= msg.timestamp
+        <br>        

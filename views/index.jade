@@ -1,15 +1,16 @@
 extends layout
 
 block content
-  #intro
-    p Hello there. <br> Welcome to DeadDrop.
-    p Select the logo to leave a message <br> at this location.
-    form#list(method="GET" action="/message")
-      input#list-latitude(type="hidden", name="latitude")
-      input#list-longitude(type="hidden", name="longitude")
-      input#list-range(type="hidden", name="range", value="100")
-      #list-submit.submit.btn
-        a(onclick="listSubmit()" name="submit") View Messages
+  .container
+    .jumbotron
+       h1.display-3 Hello there. <br> Welcome to DeadDrop.
+    p.display-2 Select the logo to drop a note <br> at this location.
+       form#list(method="GET" action="/message")
+          input#list-latitude(type="hidden", name="latitude")
+          input#list-longitude(type="hidden", name="longitude")
+          input#list-range(type="hidden", name="range", value="100")
+          #list-submit.submit.btn
+            a(onclick="listSubmit()" name="submit") Drops at this location
   #logo
-    a(href="/create")
-      img(src="/images/logo.svg")
+          a(href="/create")
+            img(src="/images/logo.svg")
