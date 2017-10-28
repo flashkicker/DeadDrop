@@ -3,12 +3,23 @@ const chai = require('chai');
 const expect = chai.expect;
 
 var BASE_URL = 'http://localhost:443';
-var testItem = {
+var testItems = {
     message: 'service unit test message',
     timestamp: '2017-09-10 10:22:33',
     latitude: 62.233589156441724,
     longitude: 25.735066461654696
 };
+
+var testItem = {
+	data: {
+		message: {
+			message: "Hey, a new message!",
+			timestamp: '2017-09-11 10:22:33',
+			latitude: 62.233589156441724,
+			longitude: 25.735066461654696
+		}
+	}
+}
 
 describe("DeadDrop Service - GET Tests", () => {
     it("Get Messages", (done) => {
@@ -25,8 +36,8 @@ describe("DeadDrop Service - GET Tests", () => {
 describe("DeadDrop Service - POST Tests", () => {
     it("Save Message", (done) => {
         superagent.post(BASE_URL + '/api/message')
-            .type('form')
             .send(testItem)
+            .set('accept', 'json')
             .end((err, res) => {
                 expect(err).to.not.exist;
                 expect(res).to.exist;

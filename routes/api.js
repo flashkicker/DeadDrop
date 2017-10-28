@@ -3,7 +3,8 @@
 
 const express = require('express');
 const router = express.Router();
-const datarepo = require('../models/message.js');
+const messageRepo = require('../models/message.js');
+const userRepo = require('../models/user.js');
 
 // /GET
 // api/message?latitude={latitude}&longitude={longitude}&range={range}
@@ -12,7 +13,7 @@ router.get('/message/', (req, res) => {
     var longitude = req.param.range;
     var range = req.param.range;
     
-    datarepo.getMessages(latitude, longitude, range, (err, result) => {
+    messageRepo.getMessages(latitude, longitude, range, (err, result) => {
             if(err) {
                 res.status(err.status || 500).json(err);
             }
@@ -30,7 +31,23 @@ router.post('/message/', (req, res) => {
     var timestamp = req.body.data.message.timestamp;
     var message = req.body.data.message.message;
 
-    datarepo.saveMessage(latitude, longitude, timestamp, message, (err, result) => {
+    messageRepo.saveMessage(latitude, longitude, timestamp, message, (err, result) => {
+        if(err) {
+            res.status(err.status || 500).json(err);
+        }
+        else {
+            res.status(200).send();
+        }
+    });
+});
+
+// /POST
+// api/register (with JSON object sent in body)
+router.post('/register', (req, res) => {
+    var username = req.body.username;
+    var password = req.body.password;
+
+    userRepo.createUser(username, password, (err, result) => {
         if(err) {
             res.status(err.status || 500).json(err);
         }
