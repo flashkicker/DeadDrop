@@ -3,12 +3,11 @@ const chai = require('chai');
 const expect = chai.expect;
 
 var BASE_URL = 'http://localhost:443';
-var testItems = {
-    message: 'service unit test message',
-    timestamp: '2017-09-10 10:22:33',
-    latitude: 62.233589156441724,
-    longitude: 25.735066461654696
-};
+
+var testUser = {
+    username: 'kilroy',
+    password: 'kilroywashere'
+}
 
 var testItem = {
 	data: {
@@ -44,5 +43,17 @@ describe("DeadDrop Service - POST Tests", () => {
                 expect(res.status).to.equal(200);
                 done();
             });
+    });
+
+    it("Create User", (done) => {
+        superagent.post(BASE_URL + '/api/register')
+        .send(testUser)
+        .set('accept', 'json')
+        .end((err, res) => {
+            expect(err).to.not.exist;
+            expect(res).to.exist;
+            expect(res.status).to.equal(200);
+            done();
+        });
     });
 });
