@@ -3,11 +3,16 @@ var dbConStr = require('../config/db.json');
 
 function getMessages(latitude, longitude, range, callback) {
     var stage = db.stage(dbConStr);
-    stage.query("select * from messages order by uuid desc");
+    a = latitude - range;
+    b = latitude + range;
+    c = longitude - range;
+    d = longitude + range;
+    
+    stage.query('SELECT * FROM `messages` WHERE (CONVERT(?, DECIMAL(13,10))<`latitude` AND `latitude`<CONVERT(?, DECIMAL(13,10))) AND (CONVERT(?, DECIMAL(13,10))<`longitude` AND `longitude`<CONVERT(?, DECIMAL(13,10))) ORDER BY `uuid` DESC', [a, b, c, d]);
     stage.finale((err, results) => {
-                        if (err) return callback(err);
-                        else return callback(err, results);
-                    });
+        if (err) return callback(err);
+        else return callback(err, results);
+    });
 }
 
 function saveMessage(latitude, longitude, timestamp, message, callback) {

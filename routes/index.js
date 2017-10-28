@@ -18,9 +18,13 @@ router.get('/create', function(req, res, next) {
 
 /* GET list of messages in the area */
 router.get('/message', function(req, res, next) {
-  var latitude = req.param.range;
-  var longitude = req.param.range;
-  var range = req.param.range;
+  var latitudeParam = req.query.latitude;
+  var longitudeParam = req.query.longitude;
+  var rangeParam = req.query.range;
+
+  let latitude = parseFloat(latitudeParam);
+  let longitude = parseFloat(longitudeParam);
+  let range = parseFloat(rangeParam);
 
   datarepo.getMessages(latitude, longitude, range, (err, result) => { //result is Array of JS objects
     res.render('list', { title: msgListTitle, messages: result });

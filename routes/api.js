@@ -9,9 +9,13 @@ const userRepo = require('../models/user.js');
 // /GET
 // api/message?latitude={latitude}&longitude={longitude}&range={range}
 router.get('/message/', (req, res) => {
-    var latitude = req.param.range;
-    var longitude = req.param.range;
-    var range = req.param.range;
+    var latitudeParam = req.query.latitude;
+    var longitudeParam = req.query.longitude;
+    var rangeParam = req.query.range;
+  
+    let latitude = parseFloat(latitudeParam);
+    let longitude = parseFloat(longitudeParam);
+    let range = parseFloat(rangeParam);
     
     messageRepo.getMessages(latitude, longitude, range, (err, result) => {
             if(err) {
