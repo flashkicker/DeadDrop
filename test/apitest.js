@@ -5,7 +5,7 @@ const expect = chai.expect;
 var BASE_URL = 'http://localhost:443';
 
 var testUser = {
-    username: 'kilroy',
+    username: 'testuser2',
     password: 'kilroywashere'
 }
 
@@ -46,7 +46,7 @@ describe("DeadDrop Service - POST Tests", () => {
     });
 
     it("Create User", (done) => {
-        superagent.post(BASE_URL + '/api/register')
+        superagent.post(BASE_URL + '/user/register')
         .send(testUser)
         .set('accept', 'json')
         .end((err, res) => {
