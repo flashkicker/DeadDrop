@@ -10,8 +10,7 @@ function getMessages(latitude, longitude, range, callback) {
     
     stage.query('SELECT * FROM `messages` WHERE (CONVERT(?, DECIMAL(13,10))<`latitude` AND `latitude`<CONVERT(?, DECIMAL(13,10))) AND (CONVERT(?, DECIMAL(13,10))<`longitude` AND `longitude`<CONVERT(?, DECIMAL(13,10))) ORDER BY `uuid` DESC', [a, b, c, d]);
     stage.finale((err, results) => {
-        if (err) return callback(err);
-        else return callback(err, results);
+        callback(err, results);
     });
 }
 
@@ -19,8 +18,7 @@ function saveMessage(latitude, longitude, timestamp, message, callback) {
     var stage = db.stage(dbConStr);
     stage.execute("insert into messages(message,timestamp,latitude,longitude) values(?,?,?,?)", [message, timestamp, latitude, longitude]);
     stage.finale((err, result) => {
-        if (err) return callback(err);
-        else return callback(err, result);
+        callback(err, result);
     });
 }
 
