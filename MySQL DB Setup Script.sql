@@ -15,6 +15,7 @@ CREATE TABLE `user` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `token` varchar(255),
   PRIMARY KEY (`id`),
   CONSTRAINT email_unique UNIQUE (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
