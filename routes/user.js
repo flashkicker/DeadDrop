@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const router = express.Router();
 
 const userRepo = require('../models/user.js');
+var authenticate = require('./authenticate');
 
 // /POST
 // user/register (with JSON object sent in body)
@@ -78,6 +79,10 @@ router.post('/login', (req, res) => {
             }
         }        
     })
+})
+
+router.get('/me', authenticate, (req, res) => {
+    res.json(res.locals.user);    
 })
 
 module.exports = router;

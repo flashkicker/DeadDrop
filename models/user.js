@@ -55,10 +55,19 @@ function getUserById(id, callback) {
     });
 }
 
+function getUserByToken(token, callback) {
+    var stage = db.stage(dbConStr);
+    stage.query("select id, username from user where token=?", [token])
+    .finale((err, result) => {
+        callback(err, result);
+    })
+}
+
 module.exports = {
     createUser,
     getUser,
     getUserById,
+    getUserByToken,
     generateAuthToken,
     saveToken
 }
