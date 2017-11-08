@@ -3,11 +3,12 @@ var dbConStr = require('../config/db.json');
 
 function getMessages(latitude, longitude, range, callback) {
     var stage = db.stage(dbConStr);
-    a = latitude - range;
-    b = latitude + range;
-    c = longitude - range;
-    d = longitude + range;
-    
+    var latitudeRange = (range/111111)
+    var longitudeRange = (range/(Math.cos(latitude)*111111));
+    a = latitude - latitudeRange;
+    b = latitude + latitudeRange;
+    c = longitude - longitudeRange;
+    d = longitude + longitudeRange;
     stage.query('SELECT * FROM `messages` WHERE (CONVERT(?, DECIMAL(13,10))<`latitude` AND `latitude`<CONVERT(?, DECIMAL(13,10))) AND (CONVERT(?, DECIMAL(13,10))<`longitude` AND `longitude`<CONVERT(?, DECIMAL(13,10))) ORDER BY `message_id` DESC', [a, b, c, d]);
     stage.finale((err, results) => {
         callback(err, results);

@@ -26,8 +26,8 @@ var testItem = {
 		message: {
 			message: "Hey, a new message!",
 			timestamp: '2017-09-11 10:22:33',
-			latitude: 62.233589156441724,
-			longitude: 25.735066461654696
+			latitude: 44.5656574,
+			longitude: -123.2782208
 		}
 	}
 }
@@ -170,6 +170,34 @@ describe("DeadDrop service tests", () => {
             expect(err).to.not.exist;
             expect(res).to.exist;
             expect(response.success).to.equal(true);
+            expect(res.status).to.equal(200);
+            done();
+        });
+    });
+
+    it("Gets messages within 10 meters", (done) => {
+        superagent.get(BASE_URL + '/api/message?latitude=44.5656574&longitude=-123.2782208&range=10')
+        .set('accept', 'json')
+        .end((err, res) => {
+            var response = JSON.parse(res.text);
+            expect(err).to.not.exist;
+            expect(res).to.exist;
+            expect(response.success).to.equal(true);
+            expect(res.body.data.messages.length).greaterThan(0);
+            expect(res.status).to.equal(200);
+            done();
+        });
+    });
+
+    it("Doesn't get messages if outside the range", (done) => {
+        superagent.get(BASE_URL + '/api/message?latitude=44.6656574&longitude=-123.3782208&range=10')
+        .set('accept', 'json')
+        .end((err, res) => {
+            var response = JSON.parse(res.text);
+            expect(err).to.not.exist;
+            expect(res).to.exist;
+            expect(response.success).to.equal(true);
+            expect(res.body.data.messages.length).equals(0);
             expect(res.status).to.equal(200);
             done();
         });
