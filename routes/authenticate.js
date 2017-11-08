@@ -13,14 +13,13 @@ var authenticate = (req, res, next) => {
             var user = result[0];
             jwt.verify(token, 'super-secret', (err, decoded) => {
                 if(err) {
-                    return res.json({
+                    return res.status(403).send({
                         success: false,
                         message: 'Failed to authenticate token.'
                     });   
                 }
                 else {
                     req.decoded = decoded;
-                    res.locals.user = user;
                     next();
                 }
             })

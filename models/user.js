@@ -25,9 +25,12 @@ function saveToken(id, token, callback) {
 
 function generateAuthToken(user) {
     var id = user[0].id;
+    var username = user[0].username;
     var payload = {
-        id: id
+        id: id,
+        username: username
     };
+    console.log(payload);
     var token = jwt.sign(payload, 'super-secret', {
         expiresIn: '1d' 
     });
@@ -63,11 +66,19 @@ function getUserByToken(token, callback) {
     })
 }
 
+function deleteUser(id, callback) {
+    var stage = db.stage(dbConStr);
+    stage.execute("delete from user where id=?", [id])
+    .finale((err, result) => {
+        callback(err, result);
+    });
+}
+
 module.exports = {
     createUser,
     getUser,
     getUserById,
     getUserByToken,
     generateAuthToken,
-    saveToken
+    deleteUser
 }

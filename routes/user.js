@@ -81,8 +81,26 @@ router.post('/login', (req, res) => {
     })
 })
 
+router.delete('/deleteAccount', authenticate, (req, res) => {
+    var id = req.body.id;
+
+    userRepo.deleteUser(id, (err, result) => {
+        if(err) {
+            res.status(403).send({
+                success: false,
+                err: err
+            });
+        }
+        else {
+            res.json({
+                success: true
+            })
+        }
+    });
+});
+
 router.get('/me', authenticate, (req, res) => {
-    res.json(res.locals.user);    
+    res.json(req.decoded);    
 })
 
 module.exports = router;
