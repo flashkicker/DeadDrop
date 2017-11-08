@@ -39,9 +39,9 @@ router.get('/message/', (req, res) => {
     var longitudeParam = req.query.longitude;
     var rangeParam = req.query.range;
     
-    let latitude = parseFloat(latitudeParam);
-    let longitude = parseFloat(longitudeParam);
-    let range = parseFloat(rangeParam);
+    var latitude = parseFloat(latitudeParam);
+    var longitude = parseFloat(longitudeParam);
+    var range = parseFloat(rangeParam);
     
     messageRepo.getMessages(latitude, longitude, range, (err, result) => {
         if(err) {

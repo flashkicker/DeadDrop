@@ -22,9 +22,9 @@ router.get('/message', function(req, res, next) {
   var longitudeParam = req.query.longitude;
   var rangeParam = req.query.range;
 
-  let latitude = parseFloat(latitudeParam);
-  let longitude = parseFloat(longitudeParam);
-  let range = parseFloat(rangeParam);
+  var latitude = parseFloat(latitudeParam);
+  var longitude = parseFloat(longitudeParam);
+  var range = parseFloat(rangeParam);
 
   datarepo.getMessages(latitude, longitude, range, (err, result) => { //result is Array of JS objects
     res.render('list', { title: msgListTitle, messages: result });
