@@ -53,11 +53,10 @@ describe("DeadDrop service tests", () => {
         superagent.post(BASE_URL + '/user/register')
         .send(testUser)
         .set('accept', 'json')
-        .end((err, res) => {
-            var response = JSON.parse(res.text);
+        .end((err, res) => {            
             expect(err).to.not.exist;
             expect(res).to.exist;
-            expect(response.success).to.equal(true);
+            expect(res.body.success).to.equal(true);
             expect(res.status).to.equal(200);
             done();
         });
@@ -67,12 +66,11 @@ describe("DeadDrop service tests", () => {
         superagent.post(BASE_URL + '/user/register')
         .send(testUser)
         .set('accept', 'json')
-        .end((err, res) => {
-            var response = JSON.parse(res.text);
+        .end((err, res) => {            
             expect(err).to.not.exist;
             expect(res).to.exist;
             expect(res.status).to.equal(200);
-            expect(response.success).to.equal(false);
+            expect(res.body.success).to.equal(false);
             done();
         });
     })
@@ -81,13 +79,12 @@ describe("DeadDrop service tests", () => {
         superagent.post(BASE_URL + '/user/login')
         .send(testUser)
         .set('accept', 'json')
-        .end((err, res) => {
-            var response = JSON.parse(res.text);
-            token = response.token;
+        .end((err, res) => {            
+            token = res.body.token;
             expect(err).to.not.exist;
             expect(res).to.exist;
-            expect(response.success).to.equal(true);
-            expect(response.token.length > 0);
+            expect(res.body.success).to.equal(true);
+            expect(res.body.token.length > 0);
             expect(res.status).to.equal(200);
             done();
         });
@@ -101,11 +98,10 @@ describe("DeadDrop service tests", () => {
         superagent.post(BASE_URL + '/user/login')
         .send(fakeTestUser)
         .set('accept', 'json')
-        .end((err, res) => {
-            var response = JSON.parse(res.text);
+        .end((err, res) => {            
             expect(err).to.not.exist;
             expect(res).to.exist;
-            expect(response.success).to.equal(false);
+            expect(res.body.success).to.equal(false);
             expect(res.status).to.equal(200);
             done();
         });
@@ -119,11 +115,10 @@ describe("DeadDrop service tests", () => {
         superagent.post(BASE_URL + '/user/login')
         .send(fakeTestUser)
         .set('accept', 'json')
-        .end((err, res) => {
-            var response = JSON.parse(res.text);
+        .end((err, res) => {            
             expect(err).to.not.exist;
             expect(res).to.exist;
-            expect(response.success).to.equal(false);
+            expect(res.body.success).to.equal(false);
             expect(res.status).to.equal(200);
             done();
         });
@@ -134,11 +129,10 @@ describe("DeadDrop service tests", () => {
         .send(testItem)
         .set('accept', 'json')
         .set('x-auth', token)
-        .end((err, res) => {
-            var response = JSON.parse(res.text);
+        .end((err, res) => {            
             expect(err).to.not.exist;
             expect(res).to.exist;
-            expect(response.success).to.equal(true);
+            expect(res.body.success).to.equal(true);
             expect(res.status).to.equal(200);
             done();
         });
@@ -148,11 +142,10 @@ describe("DeadDrop service tests", () => {
         superagent.post(BASE_URL + '/api/message')
         .send(testItemWithInvaliCoordinates)
         .set('accept', 'json')
-        .end((err, res) => {
-            var response = JSON.parse(res.text);
+        .end((err, res) => {            
             expect(err).to.exist;
             expect(res).to.exist;
-            expect(response.success).to.equal(false);
+            expect(res.body.success).to.equal(false);
             expect(res.status).to.equal(403);
             done();
         });
@@ -162,11 +155,10 @@ describe("DeadDrop service tests", () => {
         superagent.post(BASE_URL + '/api/message')
         .send(testItem)
         .set('accept', 'json')
-        .end((err, res) => {
-            var response = JSON.parse(res.text);
+        .end((err, res) => {            
             expect(err).to.exist;
             expect(res).to.exist;
-            expect(response.success).to.equal(false);
+            expect(res.body.success).to.equal(false);
             expect(res.status).to.equal(403);
             done();
         });
@@ -177,11 +169,10 @@ describe("DeadDrop service tests", () => {
         .send(testItem)
         .set('accept', 'json')
         .set('x-auth', `abc${token}`)
-        .end((err, res) => {
-            var response = JSON.parse(res.text);
+        .end((err, res) => {            
             expect(err).to.exist;
             expect(res).to.exist;
-            expect(response.success).to.equal(false);
+            expect(res.body.success).to.equal(false);
             expect(res.status).to.equal(403);
             done();
         });
@@ -190,11 +181,10 @@ describe("DeadDrop service tests", () => {
     it("Gets messages", (done) => {
         superagent.get(BASE_URL + '/api/message?latitude=5&longitude=6&range=5')
         .set('accept', 'json')
-        .end((err, res) => {
-            var response = JSON.parse(res.text);
+        .end((err, res) => {            
             expect(err).to.not.exist;
             expect(res).to.exist;
-            expect(response.success).to.equal(true);
+            expect(res.body.success).to.equal(true);
             expect(res.status).to.equal(200);
             done();
         });
@@ -203,11 +193,10 @@ describe("DeadDrop service tests", () => {
     it("Gets messages within 10 meters", (done) => {
         superagent.get(BASE_URL + '/api/message?latitude=44.5656574&longitude=-123.2782208&range=10')
         .set('accept', 'json')
-        .end((err, res) => {
-            var response = JSON.parse(res.text);
+        .end((err, res) => {            
             expect(err).to.not.exist;
             expect(res).to.exist;
-            expect(response.success).to.equal(true);
+            expect(res.body.success).to.equal(true);
             expect(res.body.data.messages.length).greaterThan(0);
             expect(res.status).to.equal(200);
             done();
@@ -217,11 +206,10 @@ describe("DeadDrop service tests", () => {
     it("Doesn't get messages if outside the range of 10 meters", (done) => {
         superagent.get(BASE_URL + '/api/message?latitude=44.6656574&longitude=-123.3782208&range=10')
         .set('accept', 'json')
-        .end((err, res) => {
-            var response = JSON.parse(res.text);
+        .end((err, res) => {            
             expect(err).to.not.exist;
             expect(res).to.exist;
-            expect(response.success).to.equal(true);
+            expect(res.body.success).to.equal(true);
             expect(res.body.data.messages.length).equals(0);
             expect(res.status).to.equal(200);
             done();
@@ -232,15 +220,14 @@ describe("DeadDrop service tests", () => {
         superagent.get(BASE_URL + '/api/message/user')
         .set('accept', 'json')
         .set('x-auth', token)
-        .end((err, res) => {
-            var response = JSON.parse(res.text);
+        .end((err, res) => {            
             testMessageDelete = {
                 message: "hola",
                 message_id: res.body.data.messages[0].message_id
             }
             expect(err).to.not.exist;
             expect(res).to.exist;
-            expect(response.success).to.equal(true);
+            expect(res.body.success).to.equal(true);
             expect(res.status).to.equal(200);
             done();
         });
@@ -268,11 +255,10 @@ describe("DeadDrop service tests", () => {
         .send(testMessageDelete)
         .set('accept', 'json')
         .set('x-auth', token)
-        .end((err, res) => {
-            var response = JSON.parse(res.text);
+        .end((err, res) => {            
             expect(err).to.not.exist;
             expect(res).to.exist;
-            expect(response.success).to.equal(true);
+            expect(res.body.success).to.equal(true);
             expect(res.status).to.equal(200);
             done();
         });
@@ -283,11 +269,10 @@ describe("DeadDrop service tests", () => {
         .send(testMessageDelete)
         .set('accept', 'json')
         .set('x-auth', token)
-        .end((err, res) => {
-            var response = JSON.parse(res.text);
+        .end((err, res) => {            
             expect(err).to.not.exist;
             expect(res).to.exist;
-            expect(response.success).to.equal(true);
+            expect(res.body.success).to.equal(true);
             expect(res.status).to.equal(200);
             done();
         });
@@ -298,11 +283,10 @@ describe("DeadDrop service tests", () => {
         .send(testUser_id)
         .set('accept', 'json')
         .set('x-auth', token)
-        .end((err, res) => {
-            var response = JSON.parse(res.text);
+        .end((err, res) => {            
             expect(err).to.not.exist;
             expect(res).to.exist;
-            expect(response.success).to.equal(true);
+            expect(res.body.success).to.equal(true);
             expect(res.status).to.equal(200);
             done();
         });
