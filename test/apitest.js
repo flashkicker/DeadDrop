@@ -32,6 +32,17 @@ var testItem = {
 	}
 }
 
+testItemWithInvaliCoordinates = {
+	data: {
+		message: {
+			message: "Hey, a new message!",
+			timestamp: '2017-09-11 10:22:33',
+			latitude: -144.5656574,
+			longitude: 1230.2782208
+		}
+	}
+}
+
 var testMessageDelete = {}
 
 describe("DeadDrop service tests", () => {
@@ -132,6 +143,20 @@ describe("DeadDrop service tests", () => {
             done();
         });
     });
+
+    it("Doesn't save a message with invalid coordinates", (done) => {
+        superagent.post(BASE_URL + '/api/message')
+        .send(testItemWithInvaliCoordinates)
+        .set('accept', 'json')
+        .end((err, res) => {
+            var response = JSON.parse(res.text);
+            expect(err).to.exist;
+            expect(res).to.exist;
+            expect(response.success).to.equal(false);
+            expect(res.status).to.equal(403);
+            done();
+        });
+    });
     
     it("Doesn't save a message without a token", (done) => {
         superagent.post(BASE_URL + '/api/message')
@@ -189,7 +214,7 @@ describe("DeadDrop service tests", () => {
         });
     });
 
-    it("Doesn't get messages if outside the range", (done) => {
+    it("Doesn't get messages if outside the range of 10 meters", (done) => {
         superagent.get(BASE_URL + '/api/message?latitude=44.6656574&longitude=-123.3782208&range=10')
         .set('accept', 'json')
         .end((err, res) => {

@@ -16,20 +16,30 @@ router.post('/message/', authenticate, (req, res) => {
     var creator_id = req.decoded.id;
     var creator_username = req.decoded.username;
     
-    messageRepo.saveMessage(latitude, longitude, timestamp, message, creator_id, creator_username, (err, result) => {
-        if(err) {
-            res.json({
-                success: false,
-                message: 'Failed to save message',
-                err: err
-            })
-        }
-        else {
-            res.json({
-                success: true
-            });
-        }
-    });
+    latitude = parseFloat(latitude).toFixed(6);
+    longitude = parseFloat(longitude).toFixed(6);
+
+    if(isFinite(latitude) && Math.abs(latitude) <= 90 && isFinite(longitude) && Math.abs(longitude) <= 180) {
+        messageRepo.saveMessage(latitude, longitude, timestamp, message, creator_id, creator_username, (err, result) => {
+            if(err) {
+                res.json({
+                    success: false,
+                    message: 'Failed to save message',
+                    err: err
+                })
+            }
+            else {
+                res.json({
+                    success: true
+                });
+            }
+        });
+    } else {
+        res.json({
+            success: false,
+            message: 'Invalid coordinates'
+        });
+    }
 });
 
 // /GET

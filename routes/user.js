@@ -82,7 +82,7 @@ router.post('/login', (req, res) => {
 })
 
 router.delete('/deleteAccount', authenticate, (req, res) => {
-    var id = req.body.id;
+    var id = req.decoded.id;
 
     userRepo.deleteUser(id, (err, result) => {
         if(err) {

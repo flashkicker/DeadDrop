@@ -6,11 +6,11 @@ CREATE TABLE `messages` (
   `message_id` int(11) NOT NULL AUTO_INCREMENT,
   `message` varchar(300) NOT NULL,
   `timestamp` datetime NOT NULL,
-  `latitude` decimal(13,10) NOT NULL,
-  `longitude` decimal(13,10) NOT NULL,
+  `latitude` decimal(9,6) NOT NULL,
+  `longitude` decimal(9,6) NOT NULL,
   `creator_id` int(20),
   `creator_username` varchar(255),
-  PRIMARY KEY (`uuid`)
+  PRIMARY KEY (`message_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 CREATE TABLE `user` (
